@@ -42,7 +42,7 @@ if ( !defined('ABSPATH')) exit;
 <body <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">
                  
 <?php responsive_container(); // before container hook ?>
-<div id="container" class="hfeed">
+<div id="container" class="hfeed" itemprop="isFamilyFriendly" content="true">
          
     <?php responsive_header(); // before header hook ?>
     <div id="header" itemprop="mentions" itemscope itemtype="http://schema.org/WPHeader">
