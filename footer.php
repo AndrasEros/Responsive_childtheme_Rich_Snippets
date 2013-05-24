@@ -30,14 +30,14 @@ $responsive_options = responsive_get_options();
 </div><!-- end of #container -->
 <?php responsive_container_end(); // after container hook ?>
 
-<div id="footer" class="clearfix" itemscope itemtype="http://schema.org/WPFooter">
+<div id="footer" class="clearfix">
 	<?php responsive_footer_top(); ?>
 
-    <div id="footer-wrapper">
+    <div id="footer-wrapper" itemprop="mentions" itemscope itemtype="http://schema.org/WPFooter">
     
         <div class="grid col-940">
         
-        <div class="grid col-540">
+        <div class="grid col-540" itemprop="mentions" itemscope itemtype="http://schema.org/SiteNavigationElement" itemprop="text">
 		<?php if (has_nav_menu('footer-menu', 'responsive')) { ?>
 	        <?php wp_nav_menu(array(
 				    'container'       => '',
@@ -80,7 +80,7 @@ $responsive_options = responsive_get_options();
                     .'<img src="' . get_stylesheet_directory_uri() . '/icons/rss-feed-icon.png" width="24" height="24" alt="RSS Feed">'
                     .'</a></li>';
        
-                if (!empty($responsive_options['google_plus_uid'])) echo '<li class="google-plus-icon"><a href="' . $responsive_options['google_plus_uid'] . '">'
+                if (!empty($responsive_options['google_plus_uid'])) echo '<li class="google-plus-icon"><a href="' . $responsive_options['google_plus_uid'] . '" rel="publisher">'
                     .'<img src="' . get_stylesheet_directory_uri() . '/icons/googleplus-icon.png" width="24" height="24" alt="Google Plus">'
                     .'</a></li>';
 					
@@ -112,8 +112,8 @@ $responsive_options = responsive_get_options();
          <?php get_sidebar('colophon'); ?>
                 
         <div class="grid col-300 copyright">
-            <?php esc_attr_e('&copy;', 'responsive'); ?> <?php _e(date('Y')); ?><a href="<?php echo home_url('/') ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>">
-                <?php bloginfo('name'); ?>
+            <?php esc_attr_e('&copy;', 'responsive'); ?> <span itemprop="copyrightYear"><?php _e(date('Y')); ?></span><a itemprop="copyrightHolder" itemscope itemtype="http://schema.org/EducationalOrganization" href="<?php echo home_url('/') ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>">
+                <span itemprop="name"><?php bloginfo('name'); ?></span>
             </a>
         </div><!-- end of .copyright -->
         

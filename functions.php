@@ -22,13 +22,13 @@ if (!function_exists('responsive_post_meta_data_enhanced')) :
 function responsive_post_meta_data_enhanced() {
 	printf( __( '<span class="%1$s">Posted on </span>%2$s<span class="%3$s"> by </span>%4$s', 'responsive' ),
 	'meta-prep meta-prep-author posted', 
-	sprintf( '<a itemscope itemtype="http://www.schema.org/BlogPosting" itemprop="datePublished" href="%1$s" title="%2$s" rel="bookmark"><span class="timestamp updated">%3$s</span></a>',
+	sprintf( '<a itemprop="datePublished" href="%1$s" title="%2$s" rel="bookmark"><span class="timestamp updated">%3$s</span></a>',
 		esc_url( get_permalink() ),
 		esc_attr( get_the_time() ),
 		esc_html( get_the_date() )
 	),
 	'byline',
-	sprintf( '<span class="author vcard" itemscope itemtype="http://www.schema.org/BlogPosting" itemprop="publisher" additionalType="http://schema.org/EducationalOrganization"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>',
+	sprintf( '<span class="author vcard" itemprop="publisher" additionalType="http://schema.org/EducationalOrganization"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>',
 		get_author_posts_url( get_the_author_meta( 'ID' ) ),
 		sprintf( esc_attr__( 'View all posts by %s', 'responsive' ), get_the_author() ),
 		esc_attr( get_the_author() )

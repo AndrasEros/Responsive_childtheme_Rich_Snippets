@@ -21,7 +21,7 @@ if ( !defined('ABSPATH')) exit;
 
 get_header(); ?>
 
-<div id="content-full" class="grid col-940" itemscope itemtype="http://schema.org/AboutPage">
+<div id="content-full" class="grid col-940" itemprop="mainContentOfPage" itemscope itemtype="http://schema.org/AboutPage">
         
 	<?php if (have_posts()) : ?>
 
@@ -35,7 +35,7 @@ get_header(); ?>
 
                 <?php get_template_part( 'post-meta-page' ); ?>
                 
-                <div class="post-entry" itemscope itemtype="http://schema.org/AboutPage" itemprop="text">
+                <div class="post-entry" itemprop="text">
                     <?php the_content(__('Read more &#8250;', 'responsive')); ?>
                     <?php wp_link_pages(array('before' => '<div class="pagination">' . __('Pages:', 'responsive'), 'after' => '</div>')); ?>
                 </div><!-- end of .post-entry -->

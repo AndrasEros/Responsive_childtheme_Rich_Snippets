@@ -21,8 +21,8 @@ if ( !defined('ABSPATH')) exit;
 <?php if ( ! is_page() && ! is_search() ) { ?>
 
 	<div class="post-data">
-		<?php the_tags(__('Tagged with:<span itemscope itemtype="http://www.schema.org/BlogPosting" itemprop="keywords">', 'responsive') . ' ', ', ', '<br />'); ?></span> 
-		<?php printf(__('Posted in <span itemscope itemtype="http://www.schema.org/BlogPosting" itemprop="articleSection">%s', 'responsive'), get_the_category_list(', ')); ?></span>  
+		<?php the_tags(__('Tagged with:<span itemprop="keywords">', 'responsive') . ' ', ', ', '<br />'); ?></span> 
+		<?php printf(__('Posted in <span itemprop="articleSection">%s', 'responsive'), get_the_category_list(', ')); ?></span>  
 	</div><!-- end of .post-data --> 
  
 <?php } ?>           

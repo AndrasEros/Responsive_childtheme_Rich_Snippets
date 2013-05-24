@@ -39,18 +39,18 @@ if ( !defined('ABSPATH')) exit;
 <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class(); ?> itemscope itemtype="http://schema.org/WebPage">
                  
 <?php responsive_container(); // before container hook ?>
 <div id="container" class="hfeed">
          
     <?php responsive_header(); // before header hook ?>
-    <div id="header" itemscope itemtype="http://schema.org/WPHeader">
+    <div id="header" itemprop="mentions" itemscope itemtype="http://schema.org/WPHeader">
 
 		<?php responsive_header_top(); // before header content hook ?>
     
         <?php if (has_nav_menu('top-menu', 'responsive')) { ?>
-	        <span itemscope itemtype="http://schema.org/SiteNavigationElement">
+	        <div itemprop="mentions" itemscope itemtype="http://schema.org/SiteNavigationElement" itemprop="text">
                 <?php wp_nav_menu(array(
 				    'container'       => '',
 					'fallback_cb'	  =>  false,
@@ -58,15 +58,19 @@ if ( !defined('ABSPATH')) exit;
 					'theme_location'  => 'top-menu')
 					); 
 				?>
-                 </span>
+                 </div>
         <?php } ?>
         
     <?php responsive_in_header(); // header hook ?>
    
 	<?php if ( get_header_image() != '' ) : ?>
                
-        <div id="logo" itemscope itemtype="http://schema.org/EducationalOrganization" itemprop="logo">
-            <a href="<?php echo home_url('/'); ?>"><img src="<?php header_image(); ?>" width="<?php if(function_exists('get_custom_header')) { echo get_custom_header() -> width;} else { echo HEADER_IMAGE_WIDTH;} ?>" height="<?php if(function_exists('get_custom_header')) { echo get_custom_header() -> height;} else { echo HEADER_IMAGE_HEIGHT;} ?>" alt="<?php bloginfo('name'); ?>" /></a>
+        <div id="logo" itemprop="publisher" itemscope itemtype="http://schema.org/EducationalOrganization">
+            <a href="<?php echo home_url('/'); ?>"><img src="<?php header_image(); ?>" width="<?php if(function_exists('get_custom_header')) { echo get_custom_header() -> width;} else { echo 
+
+HEADER_IMAGE_WIDTH;} ?>" height="<?php if(function_exists('get_custom_header')) { echo get_custom_header() -> height;} else { echo HEADER_IMAGE_HEIGHT;} ?>" itemprop="logo" alt="<?php bloginfo
+
+('name'); ?>" /></a>
         </div><!-- end of #logo -->
         
     <?php endif; // header image was removed ?>
@@ -80,8 +84,8 @@ if ( !defined('ABSPATH')) exit;
 
     <?php endif; // header image was removed (again) ?>
     
-    <span itemscope itemtype="http://schema.org/SiteNavigationElement">
     <?php get_sidebar('top'); ?>
+    <div itemprop="mentions" itemscope itemtype="http://schema.org/SiteNavigationElement" itemprop="text">
 				<?php wp_nav_menu(array(
 				    'container'       => 'div',
 						'container_class'	=> 'main-nav',
@@ -89,7 +93,9 @@ if ( !defined('ABSPATH')) exit;
 						'theme_location'  => 'header-menu')
 					); 
 				?>
-                
+    </div>
+
+    <div itemprop="mentions" itemscope itemtype="http://schema.org/SiteNavigationElement" itemprop="text">                
             <?php if (has_nav_menu('sub-header-menu', 'responsive')) { ?>
 	            <?php wp_nav_menu(array(
 				    'container'       => '',
@@ -98,7 +104,7 @@ if ( !defined('ABSPATH')) exit;
 					); 
 				?>
             <?php } ?>
-    </span>
+    </div>
 
 			<?php responsive_header_bottom(); // after header content hook ?>
  

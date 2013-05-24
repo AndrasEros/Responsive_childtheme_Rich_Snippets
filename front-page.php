@@ -50,7 +50,7 @@ if ( 'posts' == get_option( 'show_on_front' ) && $responsive_options['front_page
 
 	<div id="featured" class="grid col-940">
 	
-		<div class="grid col-460" itemscope itemtype="http://schema.org/EducationalOrganization">
+		<div class="grid col-460" itemprop="mainContentOfPage" itemscope itemtype="http://schema.org/EducationalOrganization">
 
 			<h1 class="featured-title">
 				<?php
@@ -61,7 +61,7 @@ if ( 'posts' == get_option( 'show_on_front' ) && $responsive_options['front_page
 				?>
 			</h1>
 			
-			<h2 class="featured-subtitle" itemscope itemtype="http://schema.org/Specialty" itemprop="description">
+			<h2 class="featured-subtitle" itemprop="name">
 				<?php
 				if ( isset( $responsive_options['home_subheadline'] ) && $db && $empty )
 					echo $responsive_options['home_subheadline'];
@@ -70,20 +70,22 @@ if ( 'posts' == get_option( 'show_on_front' ) && $responsive_options['front_page
 				?>
 			</h2>
 			
-			<p itemscope itemtype="http://schema.org/EducationalOrganization" itemprop="description">
+			<p itemprop="description">
 				<?php
 				if ( isset( $responsive_options['home_content_area'] ) && $db && $empty )
 					echo do_shortcode( $responsive_options['home_content_area'] );
 				else
-					_e( 'Your title, subtitle and this very content is editable from Theme Option. Call to Action button and its destination link as well. Image on your right can be an image or even YouTube video if you like.','responsive' );
+					_e( 'Your title, subtitle and this very content is editable from Theme Option. Call to Action button and its destination link as well. Image on your right 
+
+can be an image or even YouTube video if you like.','responsive' );
 				?>
 			</p>
 			
 			<?php if ($responsive_options['cta_button'] == 0): ?>  
    
-				<div class="call-to-action">
+				<div class="call-to-action" itemprop="review" itemscope itemtype="http://schema.org/SiteNavigationElement">
 
-					<a href="<?php echo $responsive_options['cta_url']; ?>" itemscope itemtype="http://schema.org/WebPage" itemprop= "significantLink" class="blue button">
+					<a href="<?php echo $responsive_options['cta_url']; ?>" itemprop= "significantLink" class="blue button">
 						<?php 
 						if( isset( $responsive_options['cta_text'] ) && $db && $empty )
 							echo $responsive_options['cta_text']; 
@@ -98,9 +100,11 @@ if ( 'posts' == get_option( 'show_on_front' ) && $responsive_options['front_page
 			
 		</div><!-- end of .col-460 -->
 
-		<div id="featured-image" class="grid col-460 fit" itemscope itemprop="blogPosts" itemtype="http://www.schema.org/Blog">
+		<div id="featured-image" class="grid col-460 fit" itemprop="mentions" itemscope itemtype="http://www.schema.org/Blog" itemprop="blogPost">
 		  
-		  <?php $featured_content = ( !empty( $responsive_options['featured_content'] ) ) ? $responsive_options['featured_content'] : '<img class="aligncenter" src="' . get_template_directory_uri() . '/images/featured-image.png" width="440" height="300" alt="" />'; ?>
+		  <?php $featured_content = ( !empty( $responsive_options['featured_content'] ) ) ? $responsive_options['featured_content'] : '<img class="aligncenter" src="' . 
+
+get_template_directory_uri() . '/images/featured-image.png" width="440" height="300" alt="" />'; ?>
 							
 			<?php echo do_shortcode( $featured_content ); ?>
 									

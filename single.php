@@ -20,7 +20,7 @@ if ( !defined('ABSPATH')) exit;
 
 get_header(); ?>
 
-<div id="content" class="<?php echo implode( ' ', responsive_get_content_classes() ); ?>">
+<div id="content" class="<?php echo implode( ' ', responsive_get_content_classes() ); ?>" itemprop="mainContentOfPage" itemscope itemtype="http://www.schema.org/BlogPosting">
         
 	<?php get_template_part( 'loop-header' ); ?>
         
@@ -34,7 +34,7 @@ get_header(); ?>
 
                 <?php get_template_part( 'post-meta' ); ?>
 
-                <div class="post-entry" itemscope itemtype="http://www.schema.org/BlogPosting" itemprop="articleBody">
+                <div class="post-entry" itemprop="articleBody">
                     <?php the_content(__('Read more &#8250;', 'responsive')); ?>
                     
                     <?php if ( get_the_author_meta('description') != '' ) : ?>
